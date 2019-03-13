@@ -13,19 +13,67 @@ class UsersListTableViewController: UITableViewController {
     var cellReuseIdentifier = "usersTableViewCell"
     var refresh = UIRefreshControl()
     
+    var allUsers = [User]()
+    var onlyFavUsers: [User]  {
+        return allUsers.filter({FavouriteUsersButton.arrayID.contains($0.login.uuid)})
+    }
+    
+    var usersData: [User] {return favMode ? onlyFavUsers : allUsers}
+    
+    var favMode = false
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
+        refresh.addTarget(self, action: #selector(refreshPage), for: UIControl.Event.valueChanged)
+        fetchData()
+    }
+    
+    
+    func setupTableView(){
         tableView.register(UsersTableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier )
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
-        refresh.addTarget(self, action: #selector(refreshPage), for: UIControl.Event.valueChanged)
         tableView.refreshControl = refresh
+        self.navigationItem.title = "User's list"
+        setUpTabBarItem()
     }
     
+    let button = UIButton(type: UIButton.ButtonType.system)
+
+    func setUpTabBarItem(){
+        button.setTitle("Favourites", for: UIControl.State.normal)
+        button.frame.size = CGSize(width: 100, height: 25)
+        button.addTarget(self, action: #selector(handleFavBarButton), for: .touchUpInside)
+        let favBarButton = UIBarButtonItem(customView: button)
+        navigationItem.rightBarButtonItem = favBarButton
+    }
+    
+    @objc func handleFavBarButton(){
+        favMode = !favMode
+        favMode ? button.setTitle("All Users", for: .normal) : button.setTitle("Favourites", for: .normal)
+        tableView.reloadSections(IndexSet(arrayLiteral: 0), with: UITableView.RowAnimation.middle)
+    }
+    
+    
+    func fetchData(){
+        APIConnection.shared.fetchData { (error, response) in
+            if let error = error { print(error); return}
+            if let res = response {
+                self.allUsers = res.results
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    
     @objc func refreshPage(sender: UIRefreshControl){
-        print("refreshing")
-        
-        
+        fetchData()
         sender.endRefreshing()
     }
     
@@ -35,7 +83,7 @@ class UsersListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return usersData.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -44,7 +92,7 @@ class UsersListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! UsersTableViewCell
-        
+        cell.user = usersData[indexPath.row]
         return cell
     }
     
@@ -52,62 +100,104 @@ class UsersListTableViewController: UITableViewController {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class UsersTableViewCell: UITableViewCell {
+    
+    var user: User? {
+        didSet{
+            if var user = user {
+                avatarImageView.getImageFromURL(user.picture, imageSizeType: .large)
+                nameLabel.text = "\(user.name.title) \(user.name.first) \(user.name.last)"
+                emailLabel.text = user.email
+                
+                favouriteButton = user.favouritesHandler
+                favouriteButton.tintColor = user.favouritesHandler.isFavourite ? UIColor.appTheme.favColor : UIColor.appTheme.nonFavColor
+                favouriteButton.addTarget(self, action: #selector(handleFavourite), for: .touchUpInside)
+
+                setUpSubViewsAndConstraints()
+            }
+        }
+    }
     
     let imageViewHeight: CGFloat = 100
     
     
-    let containerView: UIView = {
-        let container = UIView()
-        container.backgroundColor = .white
-        container.layer.cornerRadius = 10
-        container.translatesAutoresizingMaskIntoConstraints = false
-        container.addShadow()
-        return container
-    }()
+    private let containerView: UIView = {
+            let container = UIView()
+            container.backgroundColor = .white
+            container.layer.cornerRadius = 10
+            container.translatesAutoresizingMaskIntoConstraints = false
+            container.addShadow()
+            return container
+        }()
     
-    let favouriteButton: UIButton = {
-        let button = UIButton(type: UIButton.ButtonType.system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "favouriteStar"), for: UIControl.State.normal)
-        button.tintColor = UIColor.gray
-        button.layer.cornerRadius = 25
-        return button
-    }()
+    var favouriteButton: FavouriteUsersButton!
     
-    lazy var  avatarImageView: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = .gray
-        image.contentMode = UIView.ContentMode.scaleAspectFill
-        image.layer.cornerRadius = imageViewHeight / 2
-        return image
-    }()
+   private lazy var  avatarImageView: UIImageView = {
+            let image = UIImageView()
+            image.translatesAutoresizingMaskIntoConstraints = false
+            image.backgroundColor = .gray
+            image.contentMode = UIView.ContentMode.scaleAspectFill
+            image.layer.cornerRadius = imageViewHeight / 2
+            image.clipsToBounds = true
+            return image
+        }()
     
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "IowanOldStyle-Bold", size: 25)
-        label.textColor = UIColor.black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Lucas Alves da Silva"
-        return label
-    }()
+    private let nameLabel: UILabel = {
+            let label = UILabel()
+            label.font = UIFont(name: "IowanOldStyle-Bold", size: 25)
+            label.textColor = UIColor.black
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.text = "Lucas Alves da Silva"
+            return label
+        }()
     
-    let emailLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "IowanOldStyle-Italic", size: 20)
-        label.textColor = UIColor.gray
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "email: lukas@test.com"
-        return label
-    }()
+    private let emailLabel: UILabel = {
+            let label = UILabel()
+            label.font = UIFont(name: "IowanOldStyle-Italic", size: 16)
+            label.textColor = UIColor.gray
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.text = "email: lukas@test.com"
+            return label
+        }()
     
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        setUpSubViewsAndConstraints()
         setUpCell()
     }
     
@@ -119,6 +209,13 @@ class UsersTableViewCell: UITableViewCell {
     func setUpCell(){
         backgroundColor = .white
     
+    }
+    
+    @objc func handleFavourite(sender: UIButton){
+        if var user = user{
+            user.favouritesHandler.isFavourite = !user.favouritesHandler.isFavourite
+            sender.tintColor = user.favouritesHandler.isFavourite ? UIColor.appTheme.favColor : UIColor.appTheme.nonFavColor
+        }
     }
     
     func setUpSubViewsAndConstraints(){
@@ -156,9 +253,6 @@ class UsersTableViewCell: UITableViewCell {
         favouriteButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         favouriteButton.heightAnchor.constraint(equalTo: favouriteButton.widthAnchor).isActive = true
 
-        
-        
-        
     }
     
     

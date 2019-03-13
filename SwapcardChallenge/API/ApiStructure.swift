@@ -29,7 +29,7 @@ struct User: Codable {
     var picture: Picture
     var nat: String
     
-    lazy var favouritesHandler = FavouriteUsers(id: id.value)
+    lazy var favouritesHandler = FavouriteUsersButton(id: login.uuid)
 }
 
 struct Name: Codable {
@@ -42,7 +42,7 @@ struct Location: Codable {
     var street: String
     var city: String
     var state: String
-    var postcode: Int
+//    var postcode: Int
     var coordinates: Coordinates
     var timezone: UserTimezone
 }
@@ -79,7 +79,7 @@ struct Registered: Codable {
 
 struct ID: Codable {
     var name: String
-    var value: String
+    var value: String?
 }
 
 struct Picture: Codable {

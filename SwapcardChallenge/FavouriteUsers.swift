@@ -9,24 +9,44 @@
 import Foundation
 import UIKit
 
-class FavouriteUsers {
+class FavouriteUsersButton: UIButton {
     static var arrayID = [String]()
+    
     var id: String
     
-    init(id: String) {
+    override var buttonType: UIButton.ButtonType {
+        return UIButton.ButtonType.custom
+    }
+    
+     init(id: String) {
         self.id = id
+        super.init(frame: CGRect.zero)
+        setUpButton()
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    
+    func setUpButton(){
+        translatesAutoresizingMaskIntoConstraints = false
+        setImage(UIImage(named: "favouriteStar"), for: UIControl.State.normal)
+        tintColor = isFavourite ? UIColor.appTheme.favColor : UIColor.appTheme.nonFavColor
     }
     
     
     var isFavourite: Bool {
         get {
-            return FavouriteUsers.arrayID.contains(id)
+            return FavouriteUsersButton.arrayID.contains(id)
         }
         set {
             if newValue {
-                FavouriteUsers.arrayID.append(id)
+                FavouriteUsersButton.arrayID.append(id)
             } else {
-                FavouriteUsers.arrayID = FavouriteUsers.arrayID.filter({$0 != id})
+                FavouriteUsersButton.arrayID = FavouriteUsersButton.arrayID.filter({$0 != id})
             }
         }
     }

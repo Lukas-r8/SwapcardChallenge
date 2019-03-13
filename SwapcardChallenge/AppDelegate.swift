@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         let usersNavigationController = UINavigationController(rootViewController: UsersListTableViewController())
-        usersNavigationController.title = "User's list"
         window?.rootViewController = usersNavigationController
         
         
