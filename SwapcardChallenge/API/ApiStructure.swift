@@ -28,6 +28,8 @@ struct User: Codable {
     var id: ID
     var picture: Picture
     var nat: String
+    
+    lazy var favouritesHandler = FavouriteUsers(id: id.value)
 }
 
 struct Name: Codable {

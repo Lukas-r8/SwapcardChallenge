@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		12565D132238975C001C6AF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D122238975C001C6AF7 /* AppDelegate.swift */; };
-		12565D152238975C001C6AF7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D142238975C001C6AF7 /* ViewController.swift */; };
 		12565D1A2238975D001C6AF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12565D192238975D001C6AF7 /* Assets.xcassets */; };
 		12565D1D2238975D001C6AF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12565D1B2238975D001C6AF7 /* LaunchScreen.storyboard */; };
 		12565D282238975D001C6AF7 /* SwapcardChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D272238975D001C6AF7 /* SwapcardChallengeTests.swift */; };
 		12565D332238975D001C6AF7 /* SwapcardChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D322238975D001C6AF7 /* SwapcardChallengeUITests.swift */; };
 		12565D41223897EF001C6AF7 /* ApiStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D40223897EF001C6AF7 /* ApiStructure.swift */; };
 		12565D4422389EB7001C6AF7 /* ApiConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D4322389EB7001C6AF7 /* ApiConnection.swift */; };
+		12565D462238BFE3001C6AF7 /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D452238BFE3001C6AF7 /* UsersList.swift */; };
+		12565D4922393F75001C6AF7 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D4822393F75001C6AF7 /* extensions.swift */; };
+		12565D4B22394AD2001C6AF7 /* FavouriteUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D4A22394AD2001C6AF7 /* FavouriteUsers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,6 @@
 /* Begin PBXFileReference section */
 		12565D0F2238975C001C6AF7 /* SwapcardChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwapcardChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12565D122238975C001C6AF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		12565D142238975C001C6AF7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		12565D192238975D001C6AF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12565D1C2238975D001C6AF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12565D1E2238975D001C6AF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +50,9 @@
 		12565D342238975D001C6AF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12565D40223897EF001C6AF7 /* ApiStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiStructure.swift; sourceTree = "<group>"; };
 		12565D4322389EB7001C6AF7 /* ApiConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConnection.swift; sourceTree = "<group>"; };
+		12565D452238BFE3001C6AF7 /* UsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersList.swift; sourceTree = "<group>"; };
+		12565D4822393F75001C6AF7 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		12565D4A22394AD2001C6AF7 /* FavouriteUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteUsers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +103,11 @@
 		12565D112238975C001C6AF7 /* SwapcardChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				12565D4722393F5E001C6AF7 /* Helper */,
 				12565D4222389E94001C6AF7 /* API */,
 				12565D122238975C001C6AF7 /* AppDelegate.swift */,
-				12565D142238975C001C6AF7 /* ViewController.swift */,
+				12565D452238BFE3001C6AF7 /* UsersList.swift */,
+				12565D4A22394AD2001C6AF7 /* FavouriteUsers.swift */,
 				12565D192238975D001C6AF7 /* Assets.xcassets */,
 				12565D1B2238975D001C6AF7 /* LaunchScreen.storyboard */,
 				12565D1E2238975D001C6AF7 /* Info.plist */,
@@ -134,6 +140,14 @@
 				12565D4322389EB7001C6AF7 /* ApiConnection.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		12565D4722393F5E001C6AF7 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				12565D4822393F75001C6AF7 /* extensions.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,9 +281,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				12565D4422389EB7001C6AF7 /* ApiConnection.swift in Sources */,
-				12565D152238975C001C6AF7 /* ViewController.swift in Sources */,
+				12565D462238BFE3001C6AF7 /* UsersList.swift in Sources */,
 				12565D132238975C001C6AF7 /* AppDelegate.swift in Sources */,
+				12565D4B22394AD2001C6AF7 /* FavouriteUsers.swift in Sources */,
 				12565D41223897EF001C6AF7 /* ApiStructure.swift in Sources */,
+				12565D4922393F75001C6AF7 /* extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

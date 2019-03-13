@@ -18,7 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = usersViewController()
+        
+        let usersNavigationController = UINavigationController(rootViewController: UsersListTableViewController())
+        usersNavigationController.title = "User's list"
+        window?.rootViewController = usersNavigationController
         
         
         return true
