@@ -40,7 +40,7 @@ class InfoLabel: UILabel {
     
     func setUp(){
         translatesAutoresizingMaskIntoConstraints = false
-        font = UIFont(name: AppThemeFonts.bold.rawValue, size: 17)
+        font = UIFont(name: AppFonts.bold, size: 17)
         textColor = UIColor.gray
         numberOfLines = 0
         lineBreakMode = NSLineBreakMode.byWordWrapping

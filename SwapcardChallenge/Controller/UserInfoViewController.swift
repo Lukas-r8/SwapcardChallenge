@@ -16,7 +16,6 @@ class UserInfoViewController: UIViewController {
     
     var userData: User! {
         didSet{
-            
             favButton = userData.favouritesHandler
             favButton.addTarget(self, action: #selector(handleFavButton), for: .touchUpInside)
             
@@ -36,7 +35,7 @@ class UserInfoViewController: UIViewController {
 
             let loc = userData.location
             locationLabel.isFemale = isFemale
-            locationLabel.text = "Location info:\nCity: \(loc.city)\nState: \(loc.state)\nStreet: \(loc.street)\nTimezone: \(loc.timezone.description)"
+            locationLabel.text = "Location info:\nCity: \(loc.city)\nState: \(loc.state)\nStreet: \(loc.street)\nPostcode: \(loc.postcode.rawString())\nTimezone: \(loc.timezone.description)"
             
         }
     }
@@ -85,7 +84,7 @@ class UserInfoViewController: UIViewController {
     
     let nameLabel: InfoLabel = {
         let label = InfoLabel()
-        label.font = UIFont(name: AppThemeFonts.bold.rawValue, size: 30)
+        label.font = UIFont(name: AppFonts.bold, size: 30)
         return label
     }()
     
@@ -149,12 +148,12 @@ class UserInfoViewController: UIViewController {
         locationLabel.topAnchor.constraint(equalTo: accountLabel.bottomAnchor, constant: labelsSpacing).isActive = true
         locationLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 0).isActive = true
         
-        callMapButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        callMapButton.rightAnchor.constraint(equalTo: view.centerXAnchor, constant: -45).isActive = true
         callMapButton.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 20).isActive = true
         callMapButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
         callMapButton.widthAnchor.constraint(equalTo: callMapButton.heightAnchor, multiplier: 0.65).isActive = true
         
-        favButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        favButton.leftAnchor.constraint(equalTo: view.centerXAnchor, constant: 45).isActive = true
         favButton.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 20).isActive = true
         favButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
         favButton.widthAnchor.constraint(equalTo: favButton.heightAnchor).isActive = true
@@ -175,7 +174,7 @@ class UserInfoViewController: UIViewController {
     
     @objc func handleFavButton(sender: FavouriteUsersButton){
         userData.favouritesHandler.isFavourite = !userData.favouritesHandler.isFavourite
-        sender.tintColor = userData.favouritesHandler.isFavourite ? UIColor.appTheme.favColor : UIColor.appTheme.nonFavColor
+        sender.tintColor = userData.favouritesHandler.isFavourite ? AppColors.favColor : AppColors.nonFavColor
         delegate?.favValueUpdated()
     }
     

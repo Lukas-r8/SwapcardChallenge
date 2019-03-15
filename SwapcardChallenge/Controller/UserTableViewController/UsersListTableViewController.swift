@@ -10,14 +10,8 @@ import Foundation
 import UIKit
 
 class UsersListTableViewController: UITableViewController, UserInfoDelegate {
-    
-    
+
     var cellReuseIdentifier = "usersTableViewCell"
-    lazy var refresh: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshPage), for: UIControl.Event.valueChanged)
-        return refreshControl
-    }()
     
     var allUsers = [User]()
     var onlyFavUsers: [User]  {
@@ -28,19 +22,18 @@ class UsersListTableViewController: UITableViewController, UserInfoDelegate {
     
     var favMode = false
     
+    lazy var refresh: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshPage), for: UIControl.Event.valueChanged)
+        return refreshControl
+    }()
     
-    func findIndexByStr(_ str: String) -> Int{
-        var index = -1
-        for (i, user) in onlyFavUsers.enumerated(){
-            if user.login.uuid == str {
-                index = i
-            }
-        }
-        return index
-    }
-    
+    let switchListButton: UIButton = UIButton(type: UIButton.ButtonType.system)
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        switchListButton.titleLabel?.font = UIFont(name: AppFonts.bold, size: 20)
         NotificationCenter.default.addObserver(forName: .favouritePressed, object: nil, queue: nil) { (not) in
             if self.favMode {
                 if let index = not.userInfo?["indexToRemove"] as? Int{
@@ -54,6 +47,16 @@ class UsersListTableViewController: UITableViewController, UserInfoDelegate {
         fetchData()
     }
     
+    func findIndexByStr(_ str: String) -> Int{
+        var index = -1
+        for (i, user) in onlyFavUsers.enumerated(){
+            if user.login.uuid == str {
+                index = i
+            }
+        }
+        return index
+    }
+    
     
     func setupTableView(){
         tableView.register(UsersTableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier )
@@ -63,20 +66,19 @@ class UsersListTableViewController: UITableViewController, UserInfoDelegate {
         self.navigationItem.title = "Users list"
         setUpTabBarItem()
     }
-    
-    let button = UIButton(type: UIButton.ButtonType.system)
+
 
     func setUpTabBarItem(){
-        button.setTitle("Favourites", for: UIControl.State.normal)
-        button.frame.size = CGSize(width: 100, height: 25)
-        button.addTarget(self, action: #selector(handleFavBarButton), for: .touchUpInside)
-        let favBarButton = UIBarButtonItem(customView: button)
+        switchListButton.setTitle("Favourites", for: UIControl.State.normal)
+        switchListButton.frame.size = CGSize(width: 100, height: 25)
+        switchListButton.addTarget(self, action: #selector(handleFavBarButton), for: .touchUpInside)
+        let favBarButton = UIBarButtonItem(customView: switchListButton)
         navigationItem.rightBarButtonItem = favBarButton
     }
     
     @objc func handleFavBarButton(){
         favMode = !favMode
-        favMode ? button.setTitle("All Users", for: .normal) : button.setTitle("Favourites", for: .normal)
+        favMode ? switchListButton.setTitle("All Users", for: .normal) : switchListButton.setTitle("Favourites", for: .normal)
         let title = favMode ? "Favourites list" : "Users list"
         self.navigationItem.title = title
         

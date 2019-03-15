@@ -33,14 +33,14 @@ class MapCardView: UIView {
         let label = UILabel()
         label.text = "User's Location"
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: AppThemeFonts.bold.rawValue, size: 20)
+        label.font = UIFont(name: AppFonts.bold, size: 20)
         return label
     }()
     
     lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Close", for: UIControl.State.normal)
-        button.titleLabel?.font = UIFont(name: AppThemeFonts.bold.rawValue, size: 20)
+        button.titleLabel?.font = UIFont(name: AppFonts.bold, size: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(dismiss), for: UIControl.Event.touchUpInside)
         return button

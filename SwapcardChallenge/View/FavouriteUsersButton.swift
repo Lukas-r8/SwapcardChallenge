@@ -35,7 +35,7 @@ class FavouriteUsersButton: UIButton {
     func setUpButton(){
         translatesAutoresizingMaskIntoConstraints = false
         setImage(UIImage(named: "favouriteStar"), for: UIControl.State.normal)
-        tintColor = isFavourite ? UIColor.appTheme.favColor : UIColor.appTheme.nonFavColor
+        tintColor = isFavourite ? AppColors.favColor : AppColors.nonFavColor
     }
     
     

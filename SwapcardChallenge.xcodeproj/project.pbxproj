@@ -14,7 +14,7 @@
 		12565D332238975D001C6AF7 /* SwapcardChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D322238975D001C6AF7 /* SwapcardChallengeUITests.swift */; };
 		12565D41223897EF001C6AF7 /* ApiStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D40223897EF001C6AF7 /* ApiStructure.swift */; };
 		12565D4422389EB7001C6AF7 /* ApiConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D4322389EB7001C6AF7 /* ApiConnection.swift */; };
-		12565D462238BFE3001C6AF7 /* UsersListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D452238BFE3001C6AF7 /* UsersListTableView.swift */; };
+		12565D462238BFE3001C6AF7 /* UsersListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D452238BFE3001C6AF7 /* UsersListTableViewController.swift */; };
 		12565D4922393F75001C6AF7 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D4822393F75001C6AF7 /* extensions.swift */; };
 		12565D4B22394AD2001C6AF7 /* FavouriteUsersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D4A22394AD2001C6AF7 /* FavouriteUsersButton.swift */; };
 		12565D4F223970B4001C6AF7 /* ImageSizeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D4E223970B4001C6AF7 /* ImageSizeEnum.swift */; };
@@ -22,8 +22,9 @@
 		12565D562239B873001C6AF7 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D552239B873001C6AF7 /* UserInfoViewController.swift */; };
 		12565D582239FDC3001C6AF7 /* UserInfoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D572239FDC3001C6AF7 /* UserInfoProtocol.swift */; };
 		12565D5B223A9FB3001C6AF7 /* InfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D5A223A9FB3001C6AF7 /* InfoLabel.swift */; };
-		12565D5D223AA285001C6AF7 /* appThemeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D5C223AA285001C6AF7 /* appThemeFont.swift */; };
 		12565D5F223AF1E9001C6AF7 /* MapCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D5E223AF1E9001C6AF7 /* MapCardView.swift */; };
+		12565D62223C1D62001C6AF7 /* StringOrIntEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D61223C1D62001C6AF7 /* StringOrIntEnum.swift */; };
+		12565D69223C267E001C6AF7 /* AppThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D68223C267E001C6AF7 /* AppThemes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +58,7 @@
 		12565D342238975D001C6AF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12565D40223897EF001C6AF7 /* ApiStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiStructure.swift; sourceTree = "<group>"; };
 		12565D4322389EB7001C6AF7 /* ApiConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConnection.swift; sourceTree = "<group>"; };
-		12565D452238BFE3001C6AF7 /* UsersListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListTableView.swift; sourceTree = "<group>"; };
+		12565D452238BFE3001C6AF7 /* UsersListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListTableViewController.swift; sourceTree = "<group>"; };
 		12565D4822393F75001C6AF7 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		12565D4A22394AD2001C6AF7 /* FavouriteUsersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteUsersButton.swift; sourceTree = "<group>"; };
 		12565D4E223970B4001C6AF7 /* ImageSizeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeEnum.swift; sourceTree = "<group>"; };
@@ -65,8 +66,9 @@
 		12565D552239B873001C6AF7 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		12565D572239FDC3001C6AF7 /* UserInfoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoProtocol.swift; sourceTree = "<group>"; };
 		12565D5A223A9FB3001C6AF7 /* InfoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoLabel.swift; sourceTree = "<group>"; };
-		12565D5C223AA285001C6AF7 /* appThemeFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appThemeFont.swift; sourceTree = "<group>"; };
 		12565D5E223AF1E9001C6AF7 /* MapCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCardView.swift; sourceTree = "<group>"; };
+		12565D61223C1D62001C6AF7 /* StringOrIntEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringOrIntEnum.swift; sourceTree = "<group>"; };
+		12565D68223C267E001C6AF7 /* AppThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppThemes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,14 +119,11 @@
 		12565D112238975C001C6AF7 /* SwapcardChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				12565D592239FE74001C6AF7 /* Protocols */,
-				12565D502239958B001C6AF7 /* Views */,
-				12565D4722393F5E001C6AF7 /* Helper */,
-				12565D4222389E94001C6AF7 /* API */,
 				12565D122238975C001C6AF7 /* AppDelegate.swift */,
-				12565D452238BFE3001C6AF7 /* UsersListTableView.swift */,
-				12565D532239B823001C6AF7 /* UsersTableViewCell.swift */,
-				12565D552239B873001C6AF7 /* UserInfoViewController.swift */,
+				12565D4722393F5E001C6AF7 /* Helper */,
+				12565D63223C240C001C6AF7 /* Model */,
+				12565D64223C241A001C6AF7 /* View */,
+				12565D65223C2423001C6AF7 /* Controller */,
 				12565D192238975D001C6AF7 /* Assets.xcassets */,
 				12565D1B2238975D001C6AF7 /* LaunchScreen.storyboard */,
 				12565D1E2238975D001C6AF7 /* Info.plist */,
@@ -163,20 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				12565D4822393F75001C6AF7 /* extensions.swift */,
-				12565D4E223970B4001C6AF7 /* ImageSizeEnum.swift */,
-				12565D5C223AA285001C6AF7 /* appThemeFont.swift */,
 			);
 			path = Helper;
-			sourceTree = "<group>";
-		};
-		12565D502239958B001C6AF7 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				12565D4A22394AD2001C6AF7 /* FavouriteUsersButton.swift */,
-				12565D5A223A9FB3001C6AF7 /* InfoLabel.swift */,
-				12565D5E223AF1E9001C6AF7 /* MapCardView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		12565D592239FE74001C6AF7 /* Protocols */ = {
@@ -185,6 +172,62 @@
 				12565D572239FDC3001C6AF7 /* UserInfoProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		12565D63223C240C001C6AF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				12565D6A223C26F8001C6AF7 /* AppThemes */,
+				12565D4222389E94001C6AF7 /* API */,
+				12565D66223C24A8001C6AF7 /* Enums */,
+				12565D592239FE74001C6AF7 /* Protocols */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		12565D64223C241A001C6AF7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				12565D4A22394AD2001C6AF7 /* FavouriteUsersButton.swift */,
+				12565D5A223A9FB3001C6AF7 /* InfoLabel.swift */,
+				12565D5E223AF1E9001C6AF7 /* MapCardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		12565D65223C2423001C6AF7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				12565D67223C2508001C6AF7 /* UserTableViewController */,
+				12565D552239B873001C6AF7 /* UserInfoViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		12565D66223C24A8001C6AF7 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				12565D4E223970B4001C6AF7 /* ImageSizeEnum.swift */,
+				12565D61223C1D62001C6AF7 /* StringOrIntEnum.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		12565D67223C2508001C6AF7 /* UserTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				12565D452238BFE3001C6AF7 /* UsersListTableViewController.swift */,
+				12565D532239B823001C6AF7 /* UsersTableViewCell.swift */,
+			);
+			path = UserTableViewController;
+			sourceTree = "<group>";
+		};
+		12565D6A223C26F8001C6AF7 /* AppThemes */ = {
+			isa = PBXGroup;
+			children = (
+				12565D68223C267E001C6AF7 /* AppThemes.swift */,
+			);
+			path = AppThemes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,14 +362,15 @@
 			files = (
 				12565D542239B823001C6AF7 /* UsersTableViewCell.swift in Sources */,
 				12565D562239B873001C6AF7 /* UserInfoViewController.swift in Sources */,
+				12565D69223C267E001C6AF7 /* AppThemes.swift in Sources */,
+				12565D62223C1D62001C6AF7 /* StringOrIntEnum.swift in Sources */,
 				12565D4422389EB7001C6AF7 /* ApiConnection.swift in Sources */,
-				12565D462238BFE3001C6AF7 /* UsersListTableView.swift in Sources */,
+				12565D462238BFE3001C6AF7 /* UsersListTableViewController.swift in Sources */,
 				12565D132238975C001C6AF7 /* AppDelegate.swift in Sources */,
 				12565D4B22394AD2001C6AF7 /* FavouriteUsersButton.swift in Sources */,
 				12565D41223897EF001C6AF7 /* ApiStructure.swift in Sources */,
 				12565D5F223AF1E9001C6AF7 /* MapCardView.swift in Sources */,
 				12565D5B223A9FB3001C6AF7 /* InfoLabel.swift in Sources */,
-				12565D5D223AA285001C6AF7 /* appThemeFont.swift in Sources */,
 				12565D4922393F75001C6AF7 /* extensions.swift in Sources */,
 				12565D582239FDC3001C6AF7 /* UserInfoProtocol.swift in Sources */,
 				12565D4F223970B4001C6AF7 /* ImageSizeEnum.swift in Sources */,

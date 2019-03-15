@@ -19,7 +19,7 @@ class UsersTableViewCell: UITableViewCell {
                 emailLabel.text = user.email
                 
                 favouriteButton = user.favouritesHandler
-                favouriteButton.tintColor = user.favouritesHandler.isFavourite ? UIColor.appTheme.favColor : UIColor.appTheme.nonFavColor
+                favouriteButton.tintColor = user.favouritesHandler.isFavourite ? AppColors.favColor : AppColors.nonFavColor
                 favouriteButton.addTarget(self, action: #selector(handleFavourite), for: .touchUpInside)
                 
                 setUpSubViewsAndConstraints()
@@ -53,7 +53,7 @@ class UsersTableViewCell: UITableViewCell {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: AppThemeFonts.bold.rawValue, size: 25)
+        label.font = UIFont(name: AppFonts.bold, size: 25)
         label.textColor = UIColor.black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -61,7 +61,7 @@ class UsersTableViewCell: UITableViewCell {
     
     private let emailLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: AppThemeFonts.italic.rawValue, size: 16)
+        label.font = UIFont(name: AppFonts.italic, size: 16)
         label.textColor = UIColor.gray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -89,7 +89,7 @@ class UsersTableViewCell: UITableViewCell {
         let indexToRemove = getTableVC().findIndexByStr(sender.id)
         if var user = user{
             user.favouritesHandler.isFavourite = !user.favouritesHandler.isFavourite
-            sender.tintColor = user.favouritesHandler.isFavourite ? UIColor.appTheme.favColor : UIColor.appTheme.nonFavColor
+            sender.tintColor = user.favouritesHandler.isFavourite ? AppColors.favColor : AppColors.nonFavColor
             NotificationCenter.default.post(name: .favouritePressed, object: nil, userInfo: ["indexToRemove": indexToRemove])
         }
     }
@@ -105,10 +105,8 @@ class UsersTableViewCell: UITableViewCell {
     
     func setUpSubViewsAndConstraints(){
         addSubview(containerView)
-        containerView.addSubview(avatarImageView)
-        containerView.addSubview(nameLabel)
-        containerView.addSubview(emailLabel)
-        containerView.addSubview(favouriteButton)
+        
+        containerView.addMultipleViews(avatarImageView,nameLabel,emailLabel,favouriteButton)
         
         let constantSpacing: CGFloat = 8
         
