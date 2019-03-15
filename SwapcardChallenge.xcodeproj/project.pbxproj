@@ -25,6 +25,14 @@
 		12565D5F223AF1E9001C6AF7 /* MapCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D5E223AF1E9001C6AF7 /* MapCardView.swift */; };
 		12565D62223C1D62001C6AF7 /* StringOrIntEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D61223C1D62001C6AF7 /* StringOrIntEnum.swift */; };
 		12565D69223C267E001C6AF7 /* AppThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D68223C267E001C6AF7 /* AppThemes.swift */; };
+		12565D6D223C3D52001C6AF7 /* UserInfoDelegateMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D6C223C3D52001C6AF7 /* UserInfoDelegateMethods.swift */; };
+		12565D6F223C3D98001C6AF7 /* DelegateDataSourceMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D6E223C3D98001C6AF7 /* DelegateDataSourceMethods.swift */; };
+		12565D71223C3DD5001C6AF7 /* CustomMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D70223C3DD5001C6AF7 /* CustomMethods.swift */; };
+		12565D73223C3E11001C6AF7 /* ObjcMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12565D72223C3E11001C6AF7 /* ObjcMethods.swift */; };
+		12F8F8C8223C3F5A00EE8569 /* CellCustomMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F8F8C7223C3F5A00EE8569 /* CellCustomMethods.swift */; };
+		12F8F8CA223C3FDD00EE8569 /* ObjcCellMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F8F8C9223C3FDD00EE8569 /* ObjcCellMethods.swift */; };
+		12F8F8CE223C410400EE8569 /* UserInfoVCCustomMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F8F8CD223C410400EE8569 /* UserInfoVCCustomMethods.swift */; };
+		12F8F8D0223C412E00EE8569 /* UserInfoVCObjcMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F8F8CF223C412E00EE8569 /* UserInfoVCObjcMethods.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +77,14 @@
 		12565D5E223AF1E9001C6AF7 /* MapCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCardView.swift; sourceTree = "<group>"; };
 		12565D61223C1D62001C6AF7 /* StringOrIntEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringOrIntEnum.swift; sourceTree = "<group>"; };
 		12565D68223C267E001C6AF7 /* AppThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppThemes.swift; sourceTree = "<group>"; };
+		12565D6C223C3D52001C6AF7 /* UserInfoDelegateMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDelegateMethods.swift; sourceTree = "<group>"; };
+		12565D6E223C3D98001C6AF7 /* DelegateDataSourceMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateDataSourceMethods.swift; sourceTree = "<group>"; };
+		12565D70223C3DD5001C6AF7 /* CustomMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMethods.swift; sourceTree = "<group>"; };
+		12565D72223C3E11001C6AF7 /* ObjcMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjcMethods.swift; sourceTree = "<group>"; };
+		12F8F8C7223C3F5A00EE8569 /* CellCustomMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCustomMethods.swift; sourceTree = "<group>"; };
+		12F8F8C9223C3FDD00EE8569 /* ObjcCellMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjcCellMethods.swift; sourceTree = "<group>"; };
+		12F8F8CD223C410400EE8569 /* UserInfoVCCustomMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVCCustomMethods.swift; sourceTree = "<group>"; };
+		12F8F8CF223C412E00EE8569 /* UserInfoVCObjcMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVCObjcMethods.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,8 +214,8 @@
 		12565D65223C2423001C6AF7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				12565D67223C2508001C6AF7 /* UserTableViewController */,
-				12565D552239B873001C6AF7 /* UserInfoViewController.swift */,
+				12F8F8CB223C40C000EE8569 /* UserInfoViewController */,
+				12565D67223C2508001C6AF7 /* TableViewController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -213,13 +229,13 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		12565D67223C2508001C6AF7 /* UserTableViewController */ = {
+		12565D67223C2508001C6AF7 /* TableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				12565D452238BFE3001C6AF7 /* UsersListTableViewController.swift */,
-				12565D532239B823001C6AF7 /* UsersTableViewCell.swift */,
+				12F8F8D1223C419F00EE8569 /* UserTableViewController */,
+				12565D74223C3E4B001C6AF7 /* UserTableViewCell */,
 			);
-			path = UserTableViewController;
+			path = TableViewController;
 			sourceTree = "<group>";
 		};
 		12565D6A223C26F8001C6AF7 /* AppThemes */ = {
@@ -228,6 +244,62 @@
 				12565D68223C267E001C6AF7 /* AppThemes.swift */,
 			);
 			path = AppThemes;
+			sourceTree = "<group>";
+		};
+		12565D6B223C3D14001C6AF7 /* TableViewControllerExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				12565D6C223C3D52001C6AF7 /* UserInfoDelegateMethods.swift */,
+				12565D6E223C3D98001C6AF7 /* DelegateDataSourceMethods.swift */,
+				12565D70223C3DD5001C6AF7 /* CustomMethods.swift */,
+				12565D72223C3E11001C6AF7 /* ObjcMethods.swift */,
+			);
+			path = TableViewControllerExtensions;
+			sourceTree = "<group>";
+		};
+		12565D74223C3E4B001C6AF7 /* UserTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				12F8F8C6223C3F4200EE8569 /* UserCellExtensions */,
+				12565D532239B823001C6AF7 /* UsersTableViewCell.swift */,
+			);
+			path = UserTableViewCell;
+			sourceTree = "<group>";
+		};
+		12F8F8C6223C3F4200EE8569 /* UserCellExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				12F8F8C7223C3F5A00EE8569 /* CellCustomMethods.swift */,
+				12F8F8C9223C3FDD00EE8569 /* ObjcCellMethods.swift */,
+			);
+			path = UserCellExtensions;
+			sourceTree = "<group>";
+		};
+		12F8F8CB223C40C000EE8569 /* UserInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				12F8F8CC223C40D500EE8569 /* UserInfoVCExtensions */,
+				12565D552239B873001C6AF7 /* UserInfoViewController.swift */,
+			);
+			path = UserInfoViewController;
+			sourceTree = "<group>";
+		};
+		12F8F8CC223C40D500EE8569 /* UserInfoVCExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				12F8F8CD223C410400EE8569 /* UserInfoVCCustomMethods.swift */,
+				12F8F8CF223C412E00EE8569 /* UserInfoVCObjcMethods.swift */,
+			);
+			path = UserInfoVCExtensions;
+			sourceTree = "<group>";
+		};
+		12F8F8D1223C419F00EE8569 /* UserTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				12565D452238BFE3001C6AF7 /* UsersListTableViewController.swift */,
+				12565D6B223C3D14001C6AF7 /* TableViewControllerExtensions */,
+			);
+			path = UserTableViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,18 +433,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				12565D542239B823001C6AF7 /* UsersTableViewCell.swift in Sources */,
+				12565D6D223C3D52001C6AF7 /* UserInfoDelegateMethods.swift in Sources */,
+				12F8F8CA223C3FDD00EE8569 /* ObjcCellMethods.swift in Sources */,
 				12565D562239B873001C6AF7 /* UserInfoViewController.swift in Sources */,
 				12565D69223C267E001C6AF7 /* AppThemes.swift in Sources */,
+				12565D6F223C3D98001C6AF7 /* DelegateDataSourceMethods.swift in Sources */,
 				12565D62223C1D62001C6AF7 /* StringOrIntEnum.swift in Sources */,
 				12565D4422389EB7001C6AF7 /* ApiConnection.swift in Sources */,
 				12565D462238BFE3001C6AF7 /* UsersListTableViewController.swift in Sources */,
+				12F8F8C8223C3F5A00EE8569 /* CellCustomMethods.swift in Sources */,
 				12565D132238975C001C6AF7 /* AppDelegate.swift in Sources */,
 				12565D4B22394AD2001C6AF7 /* FavouriteUsersButton.swift in Sources */,
+				12F8F8D0223C412E00EE8569 /* UserInfoVCObjcMethods.swift in Sources */,
 				12565D41223897EF001C6AF7 /* ApiStructure.swift in Sources */,
 				12565D5F223AF1E9001C6AF7 /* MapCardView.swift in Sources */,
+				12565D73223C3E11001C6AF7 /* ObjcMethods.swift in Sources */,
 				12565D5B223A9FB3001C6AF7 /* InfoLabel.swift in Sources */,
 				12565D4922393F75001C6AF7 /* extensions.swift in Sources */,
 				12565D582239FDC3001C6AF7 /* UserInfoProtocol.swift in Sources */,
+				12565D71223C3DD5001C6AF7 /* CustomMethods.swift in Sources */,
+				12F8F8CE223C410400EE8569 /* UserInfoVCCustomMethods.swift in Sources */,
 				12565D4F223970B4001C6AF7 /* ImageSizeEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

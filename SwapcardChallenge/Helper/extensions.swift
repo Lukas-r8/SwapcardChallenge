@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 
+//Helper Extensions
 
 extension UIView {
     
@@ -26,8 +27,6 @@ extension UIView {
     }
 }
 
-
-
 extension UIImageView {
     func getImageFromURL(_ urlStrings: Picture, imageSizeType: ImageSize){
         var urlString: String
@@ -40,9 +39,6 @@ extension UIImageView {
             urlString = urlStrings.thumbnail
        
         }
-        
-        
-        
         guard let url = URL(string: urlString) else {return}
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request) { (data, header, error) in
@@ -56,7 +52,6 @@ extension UIImageView {
         }
         task.resume()
     }
-    
 }
 
 
@@ -78,3 +73,13 @@ extension Notification.Name {
     static let favouritePressed = Notification.Name(rawValue: "favouritePressed")
 }
 
+
+extension Error {
+    func showError() -> UIAlertController{
+        let alertController = UIAlertController(title: "ERROR", message: self.localizedDescription, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            
+        }))
+        return alertController
+    }
+}

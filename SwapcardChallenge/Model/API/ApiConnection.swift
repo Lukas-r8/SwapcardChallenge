@@ -12,11 +12,11 @@ import UIKit
 
 class APIConnection {
     static let shared = APIConnection()
-    
+
     func fetchData(callback: @escaping (Error?, Response?) -> Void){
-        guard let url = URL(string: "https://randomuser.me/api/?results=100&page=1&seed=seedOne") else {return}
+        let seed = "seedOne"
+        guard let url = URL(string: "https://randomuser.me/api/?results=100&page=1&seed=\(seed)") else {return}
         let request = URLRequest(url: url)
-        
         let task = URLSession.shared.dataTask(with: request) { (data, header, error) in
             if let err = error { callback(err, nil); return }
             guard let data = data else {return}
@@ -26,7 +26,6 @@ class APIConnection {
             } catch let err {
                 callback(err, nil)
             }
-            
         }
         task.resume()
         

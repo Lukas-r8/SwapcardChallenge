@@ -25,6 +25,12 @@ class FavouriteUsersButton: UIButton {
         setUpButton()
     }
     
+    private var buttonTintColor: UIColor = AppColors.nonFavColor {
+        didSet{
+            tintColor = buttonTintColor
+        }
+    }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -45,9 +51,11 @@ class FavouriteUsersButton: UIButton {
         }
         set {
             if newValue {
+                buttonTintColor = AppColors.favColor
                 FavouriteUsersButton.arrayID.append(id)
                 
             } else {
+                buttonTintColor = AppColors.nonFavColor
                 FavouriteUsersButton.arrayID = FavouriteUsersButton.arrayID.filter({$0 != id})
             }
             defaults.set(FavouriteUsersButton.arrayID, forKey: "favUsersArray")
