@@ -19,6 +19,11 @@ extension UIView {
         layer.shadowOffset = CGSize(width: 0.5, height: 2)
     }
     
+    func addMultipleViews(_ views: UIView...){
+        for view in views {
+            addSubview(view)
+        }
+    }
 }
 
 
@@ -60,5 +65,24 @@ extension UIColor {
         static var favColor = UIColor(cgColor: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
         static var nonFavColor = UIColor(cgColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1))
     }
+}
+
+
+extension String {
+    
+    func formattedStrDate() -> String {
+        let dateForm = DateFormatter()
+        dateForm.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateForm.locale = Locale(identifier: "en_US")
+        guard let date = dateForm.date(from: self) else {return "NO DATE"}
+        dateForm.dateFormat = "dd/MM/yy - EEEE"
+        let dateStr = dateForm.string(from: date)
+        return dateStr
+    }
+    
+}
+
+extension Notification.Name {
+    static let favouritePressed = Notification.Name(rawValue: "favouritePressed")
 }
 

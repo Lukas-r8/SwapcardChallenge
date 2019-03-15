@@ -1,5 +1,5 @@
 //
-//  usersList.swift
+//  UsersTableViewCell.swift
 //  SwapcardChallenge
 //
 //  Created by Lucas Alves Da Silva on 13/03/2019.
@@ -8,130 +8,6 @@
 
 import Foundation
 import UIKit
-
-class UsersListTableViewController: UITableViewController {
-    var cellReuseIdentifier = "usersTableViewCell"
-    var refresh = UIRefreshControl()
-    
-    var allUsers = [User]()
-    var onlyFavUsers: [User]  {
-        return allUsers.filter({FavouriteUsersButton.arrayID.contains($0.login.uuid)})
-    }
-    
-    var usersData: [User] {return favMode ? onlyFavUsers : allUsers}
-    
-    var favMode = false
-    
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupTableView()
-        refresh.addTarget(self, action: #selector(refreshPage), for: UIControl.Event.valueChanged)
-        fetchData()
-    }
-    
-    
-    func setupTableView(){
-        tableView.register(UsersTableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier )
-        tableView.separatorStyle = .none
-        tableView.tableFooterView = UIView()
-        tableView.refreshControl = refresh
-        self.navigationItem.title = "User's list"
-        setUpTabBarItem()
-    }
-    
-    let button = UIButton(type: UIButton.ButtonType.system)
-
-    func setUpTabBarItem(){
-        button.setTitle("Favourites", for: UIControl.State.normal)
-        button.frame.size = CGSize(width: 100, height: 25)
-        button.addTarget(self, action: #selector(handleFavBarButton), for: .touchUpInside)
-        let favBarButton = UIBarButtonItem(customView: button)
-        navigationItem.rightBarButtonItem = favBarButton
-    }
-    
-    @objc func handleFavBarButton(){
-        favMode = !favMode
-        favMode ? button.setTitle("All Users", for: .normal) : button.setTitle("Favourites", for: .normal)
-        tableView.reloadSections(IndexSet(arrayLiteral: 0), with: UITableView.RowAnimation.middle)
-    }
-    
-    
-    func fetchData(){
-        APIConnection.shared.fetchData { (error, response) in
-            if let error = error { print(error); return}
-            if let res = response {
-                self.allUsers = res.results
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
-        }
-    }
-    
-    
-    @objc func refreshPage(sender: UIRefreshControl){
-        fetchData()
-        sender.endRefreshing()
-    }
-    
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return usersData.count
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! UsersTableViewCell
-        cell.user = usersData[indexPath.row]
-        return cell
-    }
-    
-    
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 class UsersTableViewCell: UITableViewCell {
     
@@ -145,7 +21,7 @@ class UsersTableViewCell: UITableViewCell {
                 favouriteButton = user.favouritesHandler
                 favouriteButton.tintColor = user.favouritesHandler.isFavourite ? UIColor.appTheme.favColor : UIColor.appTheme.nonFavColor
                 favouriteButton.addTarget(self, action: #selector(handleFavourite), for: .touchUpInside)
-
+                
                 setUpSubViewsAndConstraints()
             }
         }
@@ -155,43 +31,41 @@ class UsersTableViewCell: UITableViewCell {
     
     
     private let containerView: UIView = {
-            let container = UIView()
-            container.backgroundColor = .white
-            container.layer.cornerRadius = 10
-            container.translatesAutoresizingMaskIntoConstraints = false
-            container.addShadow()
-            return container
-        }()
+        let container = UIView()
+        container.backgroundColor = .white
+        container.layer.cornerRadius = 10
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.addShadow()
+        return container
+    }()
     
     var favouriteButton: FavouriteUsersButton!
     
-   private lazy var  avatarImageView: UIImageView = {
-            let image = UIImageView()
-            image.translatesAutoresizingMaskIntoConstraints = false
-            image.backgroundColor = .gray
-            image.contentMode = UIView.ContentMode.scaleAspectFill
-            image.layer.cornerRadius = imageViewHeight / 2
-            image.clipsToBounds = true
-            return image
-        }()
+    private lazy var  avatarImageView: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.backgroundColor = .gray
+        image.contentMode = UIView.ContentMode.scaleAspectFill
+        image.layer.cornerRadius = imageViewHeight / 2
+        image.clipsToBounds = true
+        return image
+    }()
     
     private let nameLabel: UILabel = {
-            let label = UILabel()
-            label.font = UIFont(name: "IowanOldStyle-Bold", size: 25)
-            label.textColor = UIColor.black
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = "Lucas Alves da Silva"
-            return label
-        }()
+        let label = UILabel()
+        label.font = UIFont(name: AppThemeFonts.bold.rawValue, size: 25)
+        label.textColor = UIColor.black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
     private let emailLabel: UILabel = {
-            let label = UILabel()
-            label.font = UIFont(name: "IowanOldStyle-Italic", size: 16)
-            label.textColor = UIColor.gray
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = "email: lukas@test.com"
-            return label
-        }()
+        let label = UILabel()
+        label.font = UIFont(name: AppThemeFonts.italic.rawValue, size: 16)
+        label.textColor = UIColor.gray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
     
     
@@ -208,14 +82,25 @@ class UsersTableViewCell: UITableViewCell {
     
     func setUpCell(){
         backgroundColor = .white
-    
+        
     }
     
-    @objc func handleFavourite(sender: UIButton){
+    @objc func handleFavourite(sender: FavouriteUsersButton){
+        let indexToRemove = getTableVC().findIndexByStr(sender.id)
         if var user = user{
             user.favouritesHandler.isFavourite = !user.favouritesHandler.isFavourite
             sender.tintColor = user.favouritesHandler.isFavourite ? UIColor.appTheme.favColor : UIColor.appTheme.nonFavColor
+            NotificationCenter.default.post(name: .favouritePressed, object: nil, userInfo: ["indexToRemove": indexToRemove])
         }
+    }
+    
+    func getTableVC() -> UsersListTableViewController{
+        if let table = self.superview as? UITableView  {
+            if let TVC = table.delegate as? UsersListTableViewController {
+                return TVC
+            }
+        }
+        return UsersListTableViewController()
     }
     
     func setUpSubViewsAndConstraints(){
@@ -231,7 +116,7 @@ class UsersTableViewCell: UITableViewCell {
         containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -constantSpacing).isActive = true
         containerView.leftAnchor.constraint(equalTo: leftAnchor, constant: constantSpacing).isActive = true
         containerView.rightAnchor.constraint(equalTo: rightAnchor, constant: -constantSpacing).isActive = true
-
+        
         
         avatarImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
         avatarImageView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: constantSpacing).isActive = true
@@ -252,7 +137,7 @@ class UsersTableViewCell: UITableViewCell {
         favouriteButton.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: constantSpacing).isActive =  true
         favouriteButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         favouriteButton.heightAnchor.constraint(equalTo: favouriteButton.widthAnchor).isActive = true
-
+        
     }
     
     

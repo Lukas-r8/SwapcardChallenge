@@ -19,6 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
+        let defaults = UserDefaults.standard
+        
+        if defaults.dictionaryRepresentation()["favUsersArray"] == nil {
+            defaults.set([String](), forKey: "favUsersArray")
+            defaults.synchronize()
+        }
+        
+        
         let usersNavigationController = UINavigationController(rootViewController: UsersListTableViewController())
         window?.rootViewController = usersNavigationController
         

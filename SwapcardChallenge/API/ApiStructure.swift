@@ -42,7 +42,7 @@ struct Location: Codable {
     var street: String
     var city: String
     var state: String
-//    var postcode: Int
+//    var postcode: Any
     var coordinates: Coordinates
     var timezone: UserTimezone
 }

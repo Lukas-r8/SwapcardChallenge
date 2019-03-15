@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 class FavouriteUsersButton: UIButton {
-    static var arrayID = [String]()
+    let defaults = UserDefaults.standard
+    static var arrayID = UserDefaults.standard.array(forKey: "favUsersArray") as! [String]
     
     var id: String
     
@@ -45,9 +46,12 @@ class FavouriteUsersButton: UIButton {
         set {
             if newValue {
                 FavouriteUsersButton.arrayID.append(id)
+                
             } else {
                 FavouriteUsersButton.arrayID = FavouriteUsersButton.arrayID.filter({$0 != id})
             }
+            defaults.set(FavouriteUsersButton.arrayID, forKey: "favUsersArray")
+            defaults.synchronize()
         }
     }
     
