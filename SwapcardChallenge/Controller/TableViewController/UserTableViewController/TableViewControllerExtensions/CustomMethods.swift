@@ -29,8 +29,8 @@ extension UsersListTableViewController {
             }
         }
         if index != -1 {
-            sender.isFavourite = !sender.isFavourite
             if favMode {
+                sender.isFavourite = !sender.isFavourite
                 tableView.beginUpdates()
                 tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
                 tableView.endUpdates()
@@ -60,15 +60,19 @@ extension UsersListTableViewController {
     }
     
     
-    func fetchData(){
-        APIConnection.shared.fetchData { (error, response) in
+    func fetchData(page: Int){
+        APIConnection.shared.fetchData(page: page) { (error, response, firstRequest) in
             if let error = error {
                 self.present(error.showError(), animated: true, completion: {
                     print("error presented")
                 })
                 return}
             if let res = response {
-                self.allUsers = res.results
+                if firstRequest {
+                    self.allUsers = res.results
+                } else {
+                    self.allUsers.append(contentsOf: res.results)
+                }
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }

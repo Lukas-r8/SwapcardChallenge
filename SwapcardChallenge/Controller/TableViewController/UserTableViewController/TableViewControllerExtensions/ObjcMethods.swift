@@ -28,7 +28,8 @@ extension UsersListTableViewController {
     }
     
     @objc func refreshPage(sender: UIRefreshControl){
-        fetchData()
+        pageValue = 1
+        fetchData(page: pageValue)
         sender.endRefreshing()
     }
     

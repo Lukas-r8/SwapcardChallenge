@@ -260,8 +260,8 @@
 		12565D74223C3E4B001C6AF7 /* UserTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				12F8F8C6223C3F4200EE8569 /* UserCellExtensions */,
 				12565D532239B823001C6AF7 /* UsersTableViewCell.swift */,
+				12F8F8C6223C3F4200EE8569 /* UserCellExtensions */,
 			);
 			path = UserTableViewCell;
 			sourceTree = "<group>";
