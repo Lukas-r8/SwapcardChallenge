@@ -278,8 +278,8 @@
 		12F8F8CB223C40C000EE8569 /* UserInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
-				12F8F8CC223C40D500EE8569 /* UserInfoVCExtensions */,
 				12565D552239B873001C6AF7 /* UserInfoViewController.swift */,
+				12F8F8CC223C40D500EE8569 /* UserInfoVCExtensions */,
 			);
 			path = UserInfoViewController;
 			sourceTree = "<group>";

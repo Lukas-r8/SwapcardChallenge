@@ -8,7 +8,6 @@
 
 import Foundation
 
-
-protocol UserInfoDelegate {
+protocol UserInfoDelegate: class {
     func favValueUpdated()
 }

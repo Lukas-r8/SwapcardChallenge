@@ -13,21 +13,32 @@ import MapKit
 
 class MapCardView: UIView {
     
-    var parent: UserInfoViewController
+    weak var parent: UserInfoViewController?
+    
+    var parentSafe: UserInfoViewController {
+        get {
+            if let safeParent = parent {
+                return safeParent
+            } else {
+                print("wrong Parent")
+                return UserInfoViewController()
+            }
+        }
+    }
     
     var offSet: CGFloat {
-        get { return parent.view.frame.height * 0.8 }
+        get { return parentSafe.view.frame.height * 0.8 }
     }
 
-    lazy var cardConstDismissed = [topAnchor.constraint(equalTo: parent.view.bottomAnchor),
-                                   leftAnchor.constraint(equalTo: parent.view.leftAnchor),
-                                   widthAnchor.constraint(equalTo: parent.view.widthAnchor),
-                                   heightAnchor.constraint(equalTo: parent.view.heightAnchor, multiplier: 0.8)]
+    lazy var cardConstDismissed = [topAnchor.constraint(equalTo: parentSafe.view.bottomAnchor),
+                                   leftAnchor.constraint(equalTo: parentSafe.view.leftAnchor),
+                                   widthAnchor.constraint(equalTo: parentSafe.view.widthAnchor),
+                                   heightAnchor.constraint(equalTo: parentSafe.view.heightAnchor, multiplier: 0.8)]
     
-    lazy var cardConstPresented = [topAnchor.constraint(equalTo: parent.view.bottomAnchor, constant: -offSet),
-                                   leftAnchor.constraint(equalTo: parent.view.leftAnchor),
-                                   widthAnchor.constraint(equalTo: parent.view.widthAnchor),
-                                   heightAnchor.constraint(equalTo: parent.view.heightAnchor, multiplier: 0.8)]
+    lazy var cardConstPresented = [topAnchor.constraint(equalTo: parentSafe.view.bottomAnchor, constant: -offSet),
+                                   leftAnchor.constraint(equalTo: parentSafe.view.leftAnchor),
+                                   widthAnchor.constraint(equalTo: parentSafe.view.widthAnchor),
+                                   heightAnchor.constraint(equalTo: parentSafe.view.heightAnchor, multiplier: 0.8)]
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -54,7 +65,7 @@ class MapCardView: UIView {
     }()
     
     
-    required init(frame: CGRect, parent: UserInfoViewController) {
+    required init(parent: UserInfoViewController) {
         self.parent = parent
         super.init(frame: CGRect.zero)
         setUp()
@@ -76,7 +87,7 @@ class MapCardView: UIView {
     
     func setMapCoordinates(){
         mapView.removeAnnotations(mapView.annotations)
-        let userCoordinates = parent.userData.location.coordinates
+        let userCoordinates = parentSafe.userData.location.coordinates
         guard let lat = Double(userCoordinates.latitude), let long = Double(userCoordinates.longitude) else {return}
         
         let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
@@ -86,7 +97,6 @@ class MapCardView: UIView {
         let region = MKCoordinateRegion(center: location, latitudinalMeters: 20000, longitudinalMeters: 20000)
         
         mapView.setRegion(region, animated: true)
-//        mapView.setCenter(location, animated: true)
         mapView.addAnnotation(annotation)
         
     }
@@ -118,12 +128,12 @@ class MapCardView: UIView {
     func show(){
         setMapCoordinates()
         NSLayoutConstraint.activate(cardConstDismissed)
-        parent.view.layoutIfNeeded()
+        parentSafe.view.layoutIfNeeded()
         NSLayoutConstraint.deactivate(cardConstDismissed)
         NSLayoutConstraint.activate(cardConstPresented)
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-            self.parent.view.layoutIfNeeded()
+            self.parentSafe.view.layoutIfNeeded()
         }) { (success) in
             
         }
@@ -133,7 +143,7 @@ class MapCardView: UIView {
         NSLayoutConstraint.deactivate(cardConstPresented)
         NSLayoutConstraint.activate(cardConstDismissed)
         UIView.animate(withDuration: 0.3, animations: {
-            self.parent.view.layoutIfNeeded()
+            self.parentSafe.view.layoutIfNeeded()
         }) { (success) in
             
         }
